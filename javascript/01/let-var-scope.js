@@ -5,8 +5,8 @@ function change() {
   let x = 20;
   console.log(x);
   if (true) {
-    let x = 30;
-    console.log(x);
+    let x1 = 30;
+    console.log(x, x1);
   }
   console.log(x);
 }
