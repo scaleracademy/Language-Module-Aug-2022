@@ -13,5 +13,23 @@ const fizzbuzz = document.getElementById('fizzbuzz')
  */
 
 print.onclick = function () {
-
+  let x = 1;
+  while (x < count){
+    if (x%5 == 0){
+      console.log("fizz");
+      fizzbuzz.innerText = "fizz";
+    }
+    if (x%3 == 0){
+      console.log("buzz");
+      fizzbuzz.innerText = "buzz";
+      x+=1;
+      continue;
+    }
+    else
+    {
+      console.log(x);
+      fizzbuzz.innerText = x.toString();
+    }
+    x+=1;
+  }
 }
