@@ -1,6 +1,6 @@
-const count = document.getElementById('count')
-const print = document.getElementById('print')
-const fizzbuzz = document.getElementById('fizzbuzz')
+const count = document.getElementById('count');
+const print = document.getElementById('print');
+const ul = document.getElementById('fizzbuzz');
 
 /**
  * print 1 - N (N = value of count box)
@@ -13,5 +13,21 @@ const fizzbuzz = document.getElementById('fizzbuzz')
  */
 
 print.onclick = function () {
-
-}
+  const start = Date.now();
+  for (let i = 1; i <= count.value; i++) {
+    let li = document.createElement("li");
+    let text = "";
+    if (i % 3 == 0) {
+      text += "fizz";
+    }
+    if (i % 5 == 0) {
+      text += "buzz";
+    }
+    if (text === "") {
+      text = i;
+    }
+    li.innerText = text;
+    ul.appendChild(li);
+  }
+  console.log('time = ', Date.now() - start);
+};
