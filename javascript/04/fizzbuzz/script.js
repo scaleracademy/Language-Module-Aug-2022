@@ -12,22 +12,61 @@ const ul = document.getElementById('fizzbuzz');
  * 1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz ..... 
  */
 
-print.onclick = function () {
-  const start = Date.now();
-  for (let i = 1; i <= count.value; i++) {
-    let li = document.createElement("li");
-    let text = "";
-    if (i % 3 == 0) {
-      text += "fizz";
-    }
-    if (i % 5 == 0) {
-      text += "buzz";
-    }
-    if (text === "") {
-      text = i;
-    }
-    li.innerText = text;
-    ul.appendChild(li);
+const FIZZ = 'fizz', BUZZ = 'buzz'
+function isDivisbleBy(denominator) {
+  return function (num) {
+    return (num % denominator) === 0;
   }
-  console.log('time = ', Date.now() - start);
-};
+}
+
+const isDivisbleBy3 = isDivisbleBy(3);
+const isDivisbleBy5 = isDivisbleBy(5);
+
+if (print) {
+  print.onclick = function () {
+    const maxCount = Number(count.value);
+    const elementsToPrint = [];
+    for (let i = 1; i <= maxCount; ++i) {
+      if (isDivisbleBy3(i) && isDivisbleBy5(i)) {
+        elementsToPrint.push(FIZZ + BUZZ);
+      } else if (isDivisbleBy5(i)) {
+        elementsToPrint.push(FIZZ);
+      } else if (isDivisbleBy3(i)) {
+        elementsToPrint.push(BUZZ);
+      } else {
+        elementsToPrint.push(i);
+      }
+    }
+  
+    fizzbuzz.innerHTML = '';
+    elementsToPrint.forEach(ele => {
+      const liElement = document.createElement('li');
+      liElement.innerHTML = ele;
+      fizzbuzz.appendChild(liElement);
+    });
+  }
+}
+ 
+
+/**
+ * Assignment Solution by Instructor (Arnav)
+ */
+// print.onclick = function () {
+//   const start = Date.now();
+//   for (let i = 1; i <= count.value; i++) {
+//     let li = document.createElement("li");
+//     let text = "";
+//     if (i % 3 == 0) {
+//       text += "fizz";
+//     }
+//     if (i % 5 == 0) {
+//       text += "buzz";
+//     }
+//     if (text === "") {
+//       text = i;
+//     }
+//     li.innerText = text;
+//     ul.appendChild(li);
+//   }
+//   console.log('time = ', Date.now() - start);
+// };
