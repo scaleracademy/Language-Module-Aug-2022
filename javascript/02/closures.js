@@ -16,7 +16,7 @@ console.log(c1(), c1(), c1())
 console.log(c2(), c2(), c2())
 console.log(c1(), c1(), c1())
 
-
+// Shadowing of variables
 function a () {
   let x = 10
   let p = 1
